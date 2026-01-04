@@ -1,17 +1,31 @@
-research_task:
+report_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Develop a comprehensive research report on {topic}. To ensure depth 
+    and quality, you must expand on the following areas:
+    1. Landscape Analysis: The current state of {topic} and its key players.
+    2. Technical Deep-Dive: The core mechanics or concepts that drive {topic}.
+    3. Socio-Economic Impact: How {topic} is changing industries or daily life.
+    4. Future Forecast: 5-year predictions, including potential risks and breakthroughs.
+    5. Strategic Recommendations: Actionable insights for stakeholders.
+    Maintain a high information density—aim for detailed explanations rather 
+    than summaries.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A multi-section Markdown report on {topic}. It should feel exhaustive, 
+    authoritative, and be formatted with clear headers and bulleted lists 
+    for readability.
+  agent: report_generator
 
-reporting_task:
+blog_writing_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Using the detailed report as your source, write a 500-word blog post 
+    about {topic}. Your mission is to make the "Future Forecast" section 
+    of the report the star of the show. 
+    - Use a creative, "click-worthy" title.
+    - Start with a fun analogy (e.g., comparing {topic} to something 
+      common like a garden, a kitchen, or a space voyage).
+    - Keep sentences short and paragraphs under 3 lines.
+    - End with a thought-provoking question for the reader.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    An engaging, 500-word blog post in Markdown. It must be simple enough 
+    for a non-technical reader but informative enough to provide value.
+  agent: blog_writer

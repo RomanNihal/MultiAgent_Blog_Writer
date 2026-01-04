@@ -19,34 +19,41 @@ class MultiagentBlogWriter():
     
     # If you would like to add tools to your agents, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
+
+    # Defining the paths of the config files
+    agents_config = "config/agents.yaml"
+    tasks_config = "config/tasks.yaml"
+
     @agent
-    def researcher(self) -> Agent:
+    def report_generator(self) -> Agent:
         return Agent(
-            config=self.agents_config['researcher'], # type: ignore[index]
+            config=self.agents_config['report_generator'], # type: ignore[index]
             verbose=True
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def blog_writer(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'], # type: ignore[index]
+            config=self.agents_config['blog_writer'], # type: ignore[index]
             verbose=True
         )
 
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
     # https://docs.crewai.com/concepts/tasks#overview-of-a-task
+
+    # Tasks will execute in the order they are defined
     @task
-    def research_task(self) -> Task:
+    def report_task(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'], # type: ignore[index]
+            config=self.tasks_config['report_task'], # type: ignore[index]
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def blog_writing_task(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'], # type: ignore[index]
-            output_file='report.md'
+            config=self.tasks_config['blog_writing_task'], # type: ignore[index]
+            output_file='blogs/blog.md'
         )
 
     @crew
